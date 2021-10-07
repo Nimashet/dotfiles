@@ -131,3 +131,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Adding an empty line before the prompt
+PS1="\n$PS1"
