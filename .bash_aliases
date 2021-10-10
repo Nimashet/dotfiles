@@ -1,6 +1,6 @@
 #############################################################################
 # View Git Status
-alias gst='git status"
+alias gst='git status'
 
 # Add a file to Git
 alias ga='git add'
@@ -39,3 +39,21 @@ alias cls='clear'
 
 # Frequent Typos
 alias gti='git'
+
+
+#############################################################################
+
+# Move to the parent folder.
+alias ..='cd ..;pwd'
+
+# Move up two parent folders.
+alias ...='cd ../..;pwd'
+
+# Move up three parent folders.
+alias ....='cd ../../..;pwd'
+
+# Press h to view the bash history.
+alias h='history'
+
+# Display the directory structure better.
+alias tree='tree --dirsfirst -F'
