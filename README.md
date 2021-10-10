@@ -11,6 +11,11 @@ cd dotfiles
 ./install.sh
 ```
 
+### Reload .bashrc
+```
+. ~/.bashrc
+```
+
 # Uninstallation
 
 ### Change to dotfiles folder
