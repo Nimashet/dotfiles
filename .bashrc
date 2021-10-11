@@ -58,18 +58,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Adjust prompt to display git branch if current dir is part of git repo
-function git_branch() {
-   if [ -d .git ] ; then
-      printf "%s" " ($(git branch 2> /dev/null | awk '/\*/{print $2}'))";
-   fi
-}
-
-# Another way to get git branch if current dir is part of git repo
-function parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 if [ "$color_prompt" = yes ]; then
     prompt_color='\[\033[;32m\]'
     info_color='\[\033[1;34m\]'
@@ -80,12 +68,7 @@ if [ "$color_prompt" = yes ]; then
 	prompt_symbol=💀
     fi
 
-    if [ -d .git ] ; then
-        # populates the git branch
-        PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}('$info_color'\u${prompt_symbol}\h'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color']-(\[\e[0;1;91m\]$(git branch 2>/dev/null | grep '"'"'^*'"'"' | colrm 1 2)\[\e[0m\]'$prompt_color')\[\e[0m\]\n'$prompt_color'└─'$info_color'[\[\e[0m\]\!\[\e[0m\]] \[\e[0m\]\$\[\033[0m\] ' #with git branch
-    else
-        PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}('$info_color'\u${prompt_symbol}\h'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color']\n'$prompt_color'└─'$info_color'[\[\e[0m\]\!\[\e[0m\]] \[\e[0m\]\$\[\033[0m\] '
-    fi
+    PS1=$prompt_color'┌──${debian_chroot:+($debian_chroot)──}('$info_color'\u${prompt_symbol}\h'$prompt_color')-[\[\033[0;1m\]\w'$prompt_color']\n'$prompt_color'└─'$info_color'[\[\e[0m\]\!\[\e[0m\]] \[\e[0m\]\$\[\033[0m\] '
 
     # BackTrack red prompt
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
